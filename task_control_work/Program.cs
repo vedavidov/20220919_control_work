@@ -1,50 +1,21 @@
 ﻿// Написать программу, которая из имеющегося массива строк формирует новый массив из строк, 
 // длина которых меньше, либо равна 3 символам.
 
-int[,] matrix = new int[3, 3];
+string[] array = new string[8] { "123", "1567", "-2", "computer science", "NEW", "Denmark", "Kz", "757" };
+string[] arrayNew = new string[array.Length];
 
-FillArray(matrix);
-Console.WriteLine("Исходный массив: ");
-PrintArray(matrix);
-Console.WriteLine();
+SecondArray(array, arrayNew);
 
-for (int i = 0; i < matrix.GetLength(0); i++)
+void SecondArray(string[] array, string[] arrayNew)
 {
-    for (int j = 0; j < matrix.GetLength(1) - 1; j++)
+    int num = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        for (int k = 0; k < matrix.GetLength(1) - 1; k++)
+        if (array[i].Length <= 3)
         {
-            if (matrix[i, k] < matrix[i, k + 1])
-            {
-                int number = 0;
-                number = matrix[i, k];
-                matrix[i, k] = matrix[i, k + 1];
-                matrix[i, k + 1] = number;
-            }
-        }
-    }
-}
-Console.WriteLine("Новый массив: ");
-PrintArray(matrix);
-
-void PrintArray(int[,] matr)
-{
-    for (int i = 0; i < matr.GetLength(0); i++)
-    {
-        for (int j = 0; j < matr.GetLength(1); j++)
-        {
-            Console.Write($"{matr[i, j]} ");
-        }
-        Console.WriteLine();
-    }
-}
-void FillArray(int[,] matr)
-{
-    for (int i = 0; i < matr.GetLength(0); i++)
-    {
-        for (int j = 0; j < matr.GetLength(1); j++)
-        {
-            matr[i, j] = new Random().Next(1, 1000); // [1, 10)
+            arrayNew[num] = array[i];
+            num++;
+            Console.Write($"{array[i]}, ");
         }
     }
 }
